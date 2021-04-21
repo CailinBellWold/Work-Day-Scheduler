@@ -11,7 +11,7 @@ This exercise furthered experience dynamically updating HTML and CSS using jQuer
 
 ## Core Objectives Met
 
-1. IN PROGRESS: The current day is displayed at the top of the calendar when the planner is opened.
+1. The current day is displayed at the top of the calendar when the planner is opened.
 2. IN PROGRESS: When scrolling down, the user is presented with timeblocks for standard business hours.
 3. IN PROGRESS: Each timeblock is color-coded to indicate whether it is in the past, present, or future.
 4. IN PROGRESS: When a user clicks a timeblock, they can enter an event.
