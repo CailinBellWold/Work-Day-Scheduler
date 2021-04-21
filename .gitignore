@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Homework Files
+Homework-Instructions.md
+05-third-party-apis-homework-demo.gif
