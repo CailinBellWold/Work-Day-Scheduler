@@ -13,6 +13,7 @@ textarea {
   padding: 10px;
 }
 
+/* Included*/
 .jumbotron {
   text-align: center;
   background-color: transparent;
@@ -21,6 +22,7 @@ textarea {
   border-bottom: 10px solid black;
 }
 
+/* Included/Jumbotron App Description*/
 .description {
   white-space: pre-wrap;
 }
@@ -56,7 +58,7 @@ textarea {
   background-color: #77dd77;
   color: white;
 }
-
+ /*Included*/
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
