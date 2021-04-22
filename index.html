@@ -29,86 +29,85 @@
       <p class="lead description">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
-    <div class="container">
+    <div class="container-fluid">
       <!-- Timeblocks go here -->
-        <div class="row time-block">
-          <div class="col-12">
-            <table class="table">
-              <thead>
-                <tr>
+        <div class="row time-block ml-5 mr-5">
+          <table class="table">
+              <!-- <thead>
+                <tr class="d-flex">
                   <th class="col-2 hour" scope="col">Time</th>
                   <th class="col-8" scope="col">Activity</th>
                   <th class="col-2" scope="col">Save</th>
                 </tr>
-              </thead>
+              </thead> -->
               <tbody>
-                <tr>
-                  <td class="time-block hour" scope="row"></td>
-                  <td></td>
-                  <td>
-                  <button type="button" class="btn btn-block saveBtn"><i class="far fa-trash-alt"></i></button>
+                <tr class="d-flex">
+                  <td class="col-3 col-med-1 hour" id="hour9AM">9 AM</td>
+                  <td class="col-6 col-med-10" id="timeblock9AM"></td>
+                  <td class="col-3 col-med-1">
+                    <button type="button" class="btn btn-block saveBtn h-100"><i class="far fa-trash-alt"></i></button>
                   </td>
                 </tr>
-                <tr>
-                  <td class="time-block hour" scope="row"></td>
-                  <td></td>
-                  <td>
-                  <button type="button" class="btn btn-block saveBtn"><i class="far fa-trash-alt"></i></button>
+                <tr class="d-flex ">
+                  <td class="col-3 col-med-1 hour" id="hour10AM">10 AM</td>
+                  <td class="col-6 col-med-10" id="timeblock10AM"></td>
+                  <td class="col-3 col-med-1">
+                  <button type="button" class="btn btn-block saveBtn h-100"><i class="far fa-trash-alt"></i></button>
                   </td>
                 </tr>
-                <tr>
-                  <td class="time-block hour" scope="row"></td>
-                  <td></td>
-                  <td>
-                  <button type="button" class="btn btn-block saveBtn"><i class="far fa-trash-alt"></i></button>
+                <tr class="d-flex">
+                  <td class="col-3 col-med-1 hour" id="hour11AM">11 AM</td>
+                  <td class="col-6 col-med-10" id="timeblock11AM"></td>
+                  <td class="col-3 col-med-1">
+                  <button type="button" class="btn btn-block saveBtn h-100"><i class="far fa-trash-alt"></i></button>
                   </td>
                 </tr>
-                <tr>
-                  <td class="time-block hour" scope="row"></td>
-                  <td></td>
-                  <td>
-                  <button type="button" class="btn btn-block saveBtn"><i class="far fa-trash-alt"></i></button>
+                <tr class="d-flex">
+                  <td class="col-3 col-med-1 hour" id="hour12PM">12 PM</td>
+                  <td class="col-6 col-med-10" id="timeblock12PM"></td>
+                  <td class="col-3 col-med-1">
+                  <button type="button" class="btn btn-block saveBtn h-100"><i class="far fa-trash-alt"></i></button>
                   </td>
                 </tr>
-                <tr>
-                  <td class="time-block hour" scope="row"></td>
-                  <td></td>
-                  <td>
-                  <button type="button" class="btn btn-block saveBtn"><i class="far fa-trash-alt"></i></button>
+                <tr class="d-flex">
+                  <td class="col-3 col-med-1 hour" id="hour1PM">1 PM</td>
+                  <td class="col-6 col-med-10" id="timeblock1PM"></td>
+                  <td class="col-3 col-med-1">
+                  <button type="button" class="btn btn-block saveBtn h-100"><i class="far fa-trash-alt"></i></button>
                   </td>
                 </tr>
-                <tr>
-                  <td class="time-block hour" scope="row"></td>
-                  <td></td>
-                  <td>
-                  <button type="button" class="btn btn-block saveBtn"><i class="far fa-trash-alt"></i></button>
+                <tr class="d-flex">
+                  <td class="col-3 col-med-1 hour" id="hour2PM">2 PM</td>
+                  <td class="col-6 col-med-10" id="timeblock2PM"></td>
+                  <td class="col-3 col-med-1">
+                  <button type="button" class="btn btn-block saveBtn h-100"><i class="far fa-trash-alt"></i></button>
                   </td>
                 </tr>
-                <tr>
-                  <td class="time-block hour" scope="row"></td>
-                  <td></td>
-                  <td>
-                  <button type="button" class="btn btn-block saveBtn"><i class="far fa-trash-alt"></i></button>
+                <tr class="d-flex">
+                  <td class="col-3 col-med-1 hour" id="hour3PM">3 PM</td>
+                  <td class="col-6 col-med-10" id="timeblock3PM"></td>
+                  <td class="col-3 col-med-1"> 
+                  <button type="button" class="btn btn-block saveBtn h-100"><i class="far fa-trash-alt"></i></button>
                   </td>
                 </tr>
-                <tr>
-                  <td class="time-block hour" scope="row"></td>
-                  <td></td>
-                  <td>
-                  <button type="button" class="btn btn-block saveBtn"><i class="far fa-trash-alt"></i></button>
+                <tr class="d-flex">
+                  <td class="col-3 col-med-1 hour" id="hour4PM">4 PM</td>
+                  <td class="col-6 col-med-10" id="timeblock4PM"></td>
+                  <td class="col-3 col-med-1">
+                  <button type="button" class="btn btn-block saveBtn h-100"><i class="far fa-trash-alt"></i></button>
                   </td>
                 </tr>
-                <tr>
-                  <td class="time-block hour" scope="row"></td>
-                  <td></td>
-                  <td>
-                  <button type="button" class="btn btn-block saveBtn"><i class="far fa-trash-alt"></i></button>
+                <tr class="d-flex">
+                  <td class="col-3 col-med-1 hour" id="hour5PM">5 PM</td>
+                  <td class="col-6 col-med-10" id="timeblock5PM"></td>
+                  <td class="col-3 col-med-1">
+                  <button type="button" class="btn btn-block saveBtn h-100"><i class="far fa-trash-alt"></i></button>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
-        </div>
+        
       </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
