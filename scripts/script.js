@@ -1,19 +1,29 @@
 // Content Areas
 let currentDayEl = $('#currentDay');
-let rightNow;
-
-// Time Display
-function displayDate() {
-    // var rightNow = moment().format('dddd, MMMM DD, YYYY');
-    var rightNow = moment().format('dddd, LL');
-    currentDayEl.text(rightNow);
-}
-
-setInterval(displayDate, 1000);
-
+let dateNow;
+let timeNow;
 let calendarTimeIndex = 0;
 let calTime;
 let calTimeblock;
+let calTimeProtoObject;
+let calTimeArr = [];
+
+// Date Display
+function displayDate() {
+    // var dateNow = moment().format('dddd, MMMM DD, YYYY');
+    dateNow = moment().format('dddd, LL');
+    currentDayEl.text(dateNow);
+};
+
+setInterval(displayDate, 1000);
+
+// Time of Day
+function rightNow() {
+    timeNow = moment().format('LTS');
+    console.log(timeNow);
+};
+
+setInterval(rightNow, 1000);
 
 let businessHours = [
     {
@@ -56,18 +66,46 @@ let businessHours = [
 
 for (let i = 0; i < businessHours.length; i++) {
     calTime = businessHours[i].time;
-    calTimeblock = businessHours[i].timeblock;
     console.log(calTime);
+
+    calTimeProtoObject = {calTime};
+    console.log(calTimeProtoObject); 
+    //TO DO: How do I put these into an array?
+    // Look in to using .map (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+
+    calTimeblock = businessHours[i].timeblock;
     console.log(calTimeblock);
 };
 
 //GOAL: Go out and pull the inner HTML of each Time ID from the array, then convert it to Moment.js. Use is before/is same/is after to figure out where it is in relation to right now, then color corresponding timeblock accordingly using style class.
 
 // for (let i = 0; i < calTime.length; i++) {
-//     let calTimeIndex = calTime[i];
+//     // let calTimeInnerHTML = document.getElementById(calTime)[i].innerHTML;
+//     // console.log(calTimeInnerHTML);
+
+//     let calTimeIndex = document.getElementById(calTime).innerHTML;
 //     console.log(calTimeIndex);
 // };
 
+
+// timeblockColor();
+// function timeblockColor() {
+//     // get the input date from #input div element
+//     let calTimeInnerHTML = document.getElementById(calTime[i]).innerHTML;
+//     console.log(calTimeInnerHTML);
+
+//     // use moment() with input value and a string format pattern as arguments
+//     let convertTime = moment(calTime, 'HH a');
+//     console.log(convertTime);
+// };
+
+    // var beforeDuringAfter = document.getElementById('timeblock9AM');
+    // eDisplayMoment.innerHTML = Date.format('YYYY-M-D');
+
+
+// let h1 = moment(rightNow);
+
+// console.log(h1.format('LT'));
 // function timeFrame(){
 //     if (moment(rightNow).isBefore('2010-10-21')) {
 //         DO X 
@@ -76,23 +114,5 @@ for (let i = 0; i < businessHours.length; i++) {
 //     } else if (moment(rightnow).isAfter('2010-10-19')) {
 //         DO Z
 //     } else {
-//         console.log(timeFrame);
+//         console.log("Error:" timeFrame);
 //     }
-
-timeblockColor();
-function timeblockColor() {
-    // get the input date from #input div element
-    let calTimeInnerHTML = document.getElementById(calTime[1]).innerHTML;
-    console.log(calTimeInnerHTML);
-
-    // use moment() with input value and a string format pattern as arguments
-    let convertTime = moment(calTime, 'HH:MM a');
-    console.log(convertTime);
-};
-
-    // var beforeDuringAfter = document.getElementById('timeblock9AM');
-    // eDisplayMoment.innerHTML = Date.format('YYYY-M-D');
-
-
-// let h1 = moment(rightNow);
-// console.log(h1.format('LT'));

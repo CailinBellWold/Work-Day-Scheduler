@@ -27,17 +27,20 @@ textarea {
   white-space: pre-wrap;
 }
 
+/*Included*/
 .time-block {
   text-align: center;
   border-radius: 15px;
 }
 
+/*Included*/
 .row {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;
 }
 
+/*Included*/
 .hour {
   background-color: #ffffff;
   color: #000000;
@@ -59,7 +62,7 @@ textarea {
   color: white;
 }
 
- /*Included*/
+/*Included*/
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
