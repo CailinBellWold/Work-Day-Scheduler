@@ -21,8 +21,6 @@ let calTimeblock;
 let calTimeProtoObject;
 let calTimeArr = [];
 
-// Initializes Page
-init();
 
 
 // Calls Functions to Render Date and Events to the DOM
@@ -46,15 +44,16 @@ setInterval(currentDateTime, 1000);
 // TO DO: Triggers, but doesn't render to screen. Figure out why.
 function renderEvents() {
     console.log("Render Events Triggered");
-    $("#timeblock-9AM").val(localStorage.getItem("9AM"));
-    $("#timeblock-10AM").val(localStorage.getItem("10AM"));
-    $("#timeblock-11AM").val(localStorage.getItem("11AM"));
-    $("#timeblock-12PM").val(localStorage.getItem("12PM"));
-    $("#timeblock-1PM").val(localStorage.getItem("1PM"));
-    $("#timeblock-2PM").val(localStorage.getItem("2PM"));
-    $("#timeblock-3PM").val(localStorage.getItem("3PM"));
-    $("#timeblock-4PM").val(localStorage.getItem("4PM"));
-    $("#timeblock-5PM").val(localStorage.getItem("5PM"));
+    $("#timeblock-9AM").val(localStorage.getItem('9AM'));
+    console.log(localStorage.getItem('9AM'));
+    $("#timeblock-10AM").val(localStorage.getItem('10AM'));
+    $("#timeblock-11AM").val(localStorage.getItem('11AM'));
+    $("#timeblock-12PM").val(localStorage.getItem('12PM'));
+    $("#timeblock-1PM").val(localStorage.getItem('1PM'));
+    $("#timeblock-2PM").val(localStorage.getItem('2PM'));
+    $("#timeblock-3PM").val(localStorage.getItem('3PM'));
+    $("#timeblock-4PM").val(localStorage.getItem('4PM'));
+    $("#timeblock-5PM").val(localStorage.getItem('5PM'));
 };
 
 // Triggers Click Handler for Save Buttons
@@ -76,9 +75,11 @@ function saveButtonClickHandler(event) {
 
 // Stores Time and Date Values to Local Storage and re-triggers Event Rendering
 function storeEvents() {
-    localStorage.setItem((JSON.stringify(calEntryEventTime)),(JSON.stringify(calEntryEventTxt)));
-    renderEvents();
+    localStorage.setItem(calEntryEventTime, calEntryEventTxt);
 };
+
+// Initializes Page
+init();
 
 // STILL WORKING
 // let businessHours = [
