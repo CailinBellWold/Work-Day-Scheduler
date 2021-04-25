@@ -15,7 +15,7 @@ This exercise furthered experience dynamically updating HTML and CSS using jQuer
 2. When scrolling down, the user is presented with timeblocks for standard business hours.
 3. IN PROGRESS: Each timeblock is color-coded to indicate whether it is in the past, present, or future.
 4. When a user clicks a timeblock, they can enter an event.
-5. IN PROGRESS: When a user clicks a save button for a timeblock, text for that event is saved in local storage.
+5. When a user clicks a save button for a timeblock, text for that event is saved in local storage.
 6. IN PROGRESS: When a user refreshes a page, the saved event persists. 
 
 ## Screen Shot
