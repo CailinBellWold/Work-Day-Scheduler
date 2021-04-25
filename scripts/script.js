@@ -1,66 +1,72 @@
 // Content Areas
+
+// Current Date
 let currentDayEl = $('#currentDay');
 let dateNow;
+
+//Current Time
 let timeNow;
+
+// Content to Write/Get to Local Storage (Time and Text)
+let calEntryEventTime;
+let calEntryEventTxt;
+
+// Button
+let saveBtn = $('.saveBtn');
+
 let calendarTimeIndex = 0;
 let calTime;
 let calTimeblock;
+
 let calTimeProtoObject;
 let calTimeArr = [];
 
 // Date Display
-function displayDate() {
+function currentDateTime() {
     // var dateNow = moment().format('dddd, MMMM DD, YYYY');
     dateNow = moment().format('dddd, LL');
+    timeNow = moment().format('LTS');
     currentDayEl.text(dateNow);
 };
 
-setInterval(displayDate, 1000);
-
-// Time of Day
-function rightNow() {
-    timeNow = moment().format('LTS');
-    console.log(timeNow);
-};
-
-setInterval(rightNow, 1000);
+setInterval(currentDateTime, 1000);
 
 let businessHours = [
     {
-    time: 'hour9AM',
-    timeblock: 'timeblock9AM',
+    time: '9-AM',
+    timeblock: 'timeblock-9AM',
     },
     {
-    time: 'hour10AM',
-    timeblock: 'timeblock10AM',
+    time: '10-AM',
+    timeblock: 'timeblock-10AM',
     },
     {
-    time: 'hour11AM',
-    timeblock: 'timeblock11AM',
+    time: '11-AM',
+    timeblock: 'timeblock-11AM',
     },
     {
-    time: 'hour12PM',
-    timeblock: 'timeblock12PM',
+    time: '12-PM',
+    timeblock: 'timeblock-12PM',
     },
     {
-    time: 'hour1PM',
-    timeblock: 'timeblock1PM',
+    time: '1-PM',
+    timeblock: 'timeblock-1PM',
     },
     {
-    time: 'hour2PM',
-    timeblock: 'timeblock2PM',
+    time: '2-PM',
+    timeblock: 'timeblock-2PM',
     },
     {
-    time: 'hour3PM',
-    timeblock: 'timeblock3PM',
+    time: '3-PM',
+    timeblock: 'timeblock-3PM',
     },
     {
-    time: 'hour4PM',
-    timeblock: 'timeblock4PM',
+    time: '4-PM',
+    timeblock: 'timeblock-4PM',
     },
     {
-    time: 'hour5PM',
-    timeblock: 'timeblock5PM',
+    time: '5-PM',
+    timeblock: 'timeblock-5PM',
     }
 ];
 
@@ -99,13 +105,6 @@ for (let i = 0; i < businessHours.length; i++) {
 //     console.log(convertTime);
 // };
 
-    // var beforeDuringAfter = document.getElementById('timeblock9AM');
-    // eDisplayMoment.innerHTML = Date.format('YYYY-M-D');
-
-
-// let h1 = moment(rightNow);
-
-// console.log(h1.format('LT'));
 // function timeFrame(){
 //     if (moment(rightNow).isBefore('2010-10-21')) {
 //         DO X 
@@ -116,3 +115,16 @@ for (let i = 0; i < businessHours.length; i++) {
 //     } else {
 //         console.log("Error:" timeFrame);
 //     }
+
+function saveButtonClickHandler(event) {
+    console.log("SubmitButtonClicked"); //Works
+    event.preventDefault();
+
+    calEntryEventTime = $(this).attr('id').split('-')[1];
+    console.log(calEntryEventTime); //Works
+    
+    calEntryEventTxt = $(this).siblings('input[name^="timeblock"]').val().trim();
+    console.log(calEntryEventTxt); //Works
+};
+
+saveBtn.on('click', saveButtonClickHandler);
