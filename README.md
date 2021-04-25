@@ -1,7 +1,7 @@
 # 05 Third-Party APIs: Work Day Scheduler
 
 ## Description
-Refactor a simple calendar application that allows a user to save events for each business hour of the day.
+Refactor a simple calendar application that allows a user to save events for each hour of the business day.
 
 ### Motivation
 Many, if not most, applications contain some aspect that deals with time. Diving in to Moment.js as one data/time handling option was useful for discovering how time data can be passed, formatted, and utlized to update the DOM.
