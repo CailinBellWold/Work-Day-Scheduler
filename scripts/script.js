@@ -1,13 +1,13 @@
 // Variables
 
 // Current Date
-let currentDayEl = $('#currentDay');
+let currentDateEl = $('#currentDate');
 let currentDate;
 
 // Current Time
 let currentTime;
 
-// Content to Write/Get to Local Storage (Time and Text)
+// Content to Set-To/Get-From Local Storage (Time and Text)
 let calEntryEventTime;
 let calEntryEventTxt;
 
@@ -16,33 +16,23 @@ let saveBtn = $('.saveBtn');
 
 // Vars for Determining Color
 let calTimeblock;
+let timerInterval;
 
-// let calendarTimeIndex = 0;
-// let calTime;
-// let calTimeProtoObject;
-// let calTimeArr = [];
-
-// Calls Functions to Render Date and Events to the DOM
+// Calls Functions to Render Date and Events to the DOM & Update Colors
 function init() {
-    currentDateTime();
+    currentMomentDate();
     renderEvents();
+    setBGColors();
 };
 
-// Gets Current Date and Time
-function currentDateTime() {
-    // var dateNow = moment().format('dddd, MMMM DD, YYYY');
+// Gets Current Date and Renders in Jumbotron Header
+function currentMomentDate() {
     currentDate = moment().format('dddd, LL');
-    currentTime = moment().format('hA');
-    currentDayEl.text(currentDate);
+    currentDateEl.text(currentDate);
 };
 
-// Updates Date and Time Once/Second
-setInterval(currentDateTime, 1000);
-
-// Renders Events from Local Storage to DOM
-// TO DO: Triggers, but doesn't render to screen. Figure out why.
+// Renders Events Pulled from Local Storage to DOM
 function renderEvents() {
-    console.log("Render Events Triggered");
     $("#timeblock-9AM").val(localStorage.getItem('9AM'));
     $("#timeblock-10AM").val(localStorage.getItem('10AM'));
     $("#timeblock-11AM").val(localStorage.getItem('11AM'));
@@ -59,28 +49,41 @@ saveBtn.on('click', saveButtonClickHandler);
 
 // When Save Button Clicked, Pulls Corresponding Time and Date Values
 function saveButtonClickHandler(event) {
-    console.log("SubmitButtonClicked");
+    // Keeps Form from Sending
     event.preventDefault();
 
+    // Sets Value to Time Associated with Clicked Save Button
     calEntryEventTime = $(this).attr('id').split('-')[1];
-    console.log(calEntryEventTime);
-    
-    calEntryEventTxt = $(this).siblings('input[name^="timeblock"]').val().trim();
-    console.log(calEntryEventTxt);
 
+    // Sets Value to the User's Input Text
+    calEntryEventTxt = $(this).siblings('input[name^="timeblock"]').val().trim();
+
+    // Calls Function to Store in Local Storage
     storeEvents();
 };
 
-// Stores Time and Date Values to Local Storage and re-triggers Event Rendering
+// Stores Time and Text Values to Local Storage where (Time = Key) and (User's Input Text = Value)
 function storeEvents() {
     localStorage.setItem(calEntryEventTime, calEntryEventTxt);
 };
 
-// STILL WORKING
+// Create var to pull IDs from all Timeblock Elements
+let timeblockID = $("input[id*='timeblock']");
 
-$("input[id*='timeblock']").each(function () {
+// Updates Timeblock Classes/Colors as Time Progresses
+
+function setBGColors() {
+
+    // For each timeblock ID, 
+    timeblockID.each(function () {
+    // Split it to display the time contained at the end of the ID, 
     calTimeBlock = $(this).attr('id').split('-')[1];
-    // Update Classes as Time Progresses
+    // And convert it to a recognizable Moment.js format.
+    calTimeBlock = moment(calTimeBlock).format('hA');
+    // Get Moment.js Time & format identically
+    currentTime = moment().format('hA');
+    
+    // Compair Current and ID times and Update Colors as Time Progresses
     if (calTimeBlock > currentTime) {
         $(this).addClass('future');
     } else if (calTimeBlock === currentTime) {
@@ -90,7 +93,21 @@ $("input[id*='timeblock']").each(function () {
         $(this).removeClass('present');
         $(this).addClass('past');
     }
-});
+    })
+};
+
+// Updates Date and Time Once/Second
+setInterval(currentMomentDate, 1000);
+
+// Updates Colors Once/Second
+setInterval(setBGColors, 1000);
 
 // Initializes Page
 init();
+
+// TO DO: 
+// 1.) Figure out why currentTime won't pass in from a seperate function. Included in setBGColors, for now, though it makes function long.
+// 2.) Find out if there is a way to avoid deprecation warning.
+// 3.) Figure out why time is formating at top of field (tried text-align-center).
+// 4.) Grant more height to timeblock text to avoid cutting off bottom of decenders.
+// 5.) Add Media-Queries to update look on mobile/small screens.
