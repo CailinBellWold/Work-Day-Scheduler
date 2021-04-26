@@ -73,41 +73,55 @@ let timeblockID = $("input[id*='timeblock']");
 // Updates Timeblock Classes/Colors as Time Progresses
 
 function setBGColors() {
-
+    console.log("setBGColorsRUN");
     // For each timeblock ID, 
     timeblockID.each(function () {
+
     // Split it to display the time contained at the end of the ID, 
     calTimeBlock = $(this).attr('id').split('-')[1];
+
     // And convert it to a recognizable Moment.js format.
-    calTimeBlock = moment(calTimeBlock).format('hA');
+    calTimeBlock = moment(calTimeBlock, 'hA').hours('hA');
+
     // Get Moment.js Time & format identically
-    currentTime = moment().format('hA');
-    
-    // Compair Current and ID times and Update Colors as Time Progresses
-    if (calTimeBlock > currentTime) {
+    currentTime = moment().hours('hA');
+
+    if (moment(currentTime).isBefore(calTimeBlock)) {
         $(this).addClass('future');
-    } else if (calTimeBlock === currentTime) {
+    } else if (moment(currentTime).isSame(calTimeBlock)) {
         $(this).removeClass('future');
         $(this).addClass('present');
-    } else {
+    } else if (moment(currentTime).isAfter(calTimeBlock)) {
         $(this).removeClass('present');
         $(this).addClass('past');
+    } else {
+        console.log("Time Calculation Error");
     }
     })
 };
 
-// Updates Date and Time Once/Second
-setInterval(currentMomentDate, 1000);
+// Updates Date/Time and Colors Once Per Minute On The Minute
+function setIntervalOnMinute() {
+    var currentDateSeconds = new Date().getSeconds();
+    if (currentDateSeconds == 0) {
+        setInterval(currentMomentDate, 60000);
+        setInterval(setBGColors, 60000);
+    } else {
+        setTimeout(function () {
+            setIntervalOnMinute();
+        }, (60 - currentDateSeconds) * 1000);
+    }
+    currentMomentDate();
+    setBGColors();
+};
 
-// Updates Colors Once/Second
-setInterval(setBGColors, 1000);
+setIntervalOnMinute();
 
 // Initializes Page
 init();
 
 // TO DO: 
 // 1.) Figure out why currentTime won't pass in from a seperate function. Included in setBGColors, for now, though it makes function long.
-// 2.) Find out if there is a way to avoid deprecation warning.
-// 3.) Figure out why time is formating at top of field (tried text-align-center).
-// 4.) Grant more height to timeblock text to avoid cutting off bottom of decenders.
-// 5.) Add Media-Queries to update look on mobile/small screens.
+// 2.) Figure out why time is formating at top of field (tried text-align-center).
+// 3.) Grant more height to timeblock text to avoid cutting off bottom of decenders.
+// 4.) Add Media-Queries to update look on mobile/small screens.
