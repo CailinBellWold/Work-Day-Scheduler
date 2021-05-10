@@ -6,7 +6,7 @@ let currentTime;
 // Set-To/Get-From Local Storage (Time and Text)
 let calEntryEventTime;
 let calEntryEventTxt;
-let timeArr = ['9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM'];
+let timeArr = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
 
 // Button
 let saveBtn = $('.saveBtn');
@@ -64,16 +64,12 @@ function setBGColors() {
     timeblockID.each(function () {
     // Split it to display the time contained at the end of the ID, 
     calTimeBlock = $(this).attr('id').split('-')[1];
-    // And convert it to a recognizable Moment.js format.
-    calTimeBlock = moment(calTimeBlock, 'hA').format('hA');
+    // And convert it to a Moment.js format, then an integer
+    calTimeBlock = parseInt(moment(calTimeBlock, 'H').format('H'));
     // Get Moment.js Time & format identically
-    currentTime = moment().format('hA');
-
-    console.log(currentTime);
-    console.log(calTimeBlock);
-    console.log(currentTime < calTimeBlock);
+    currentTime = parseInt(moment().format('H'));
     
-if (currentTime < calTimeBlock) {
+    if (currentTime < calTimeBlock) {
         $(this).removeClass('past present');
         $(this).addClass('future');
     } else if (currentTime === calTimeBlock) {
@@ -109,5 +105,4 @@ setIntervalOnMinute();
 init();
 
 // TO DO: 
-// 1.) Figure out why 9AM is always showing up as future (console-logs as future; isn't )
 // 2.) Add Media-Queries to update look on mobile/small screens.

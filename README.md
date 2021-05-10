@@ -26,4 +26,3 @@ This exercise furthered experience dynamically updating HTML and CSS using jQuer
 
 https://cailinbellwold.github.io/Work-Day-Scheduler
 #
-
