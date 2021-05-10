@@ -1,22 +1,20 @@
-// Variables
-
-// Current Date
+// Current Date / Time
 let currentDateEl = $('#currentDate');
 let currentDate;
-
-// Current Time
 let currentTime;
 
-// Content to Set-To/Get-From Local Storage (Time and Text)
+// Set-To/Get-From Local Storage (Time and Text)
 let calEntryEventTime;
 let calEntryEventTxt;
+let timeArr = ['9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM'];
 
 // Button
 let saveBtn = $('.saveBtn');
 
-// Vars for Determining Color
+// Determine Color
 let calTimeblock;
 let timerInterval;
+let timeblockID = $("input[id*='timeblock']");
 
 // Calls Functions to Render Date and Events to the DOM & Update Colors
 function init() {
@@ -33,15 +31,11 @@ function currentMomentDate() {
 
 // Renders Events Pulled from Local Storage to DOM
 function renderEvents() {
-    $("#timeblock-9AM").val(localStorage.getItem('9AM'));
-    $("#timeblock-10AM").val(localStorage.getItem('10AM'));
-    $("#timeblock-11AM").val(localStorage.getItem('11AM'));
-    $("#timeblock-12PM").val(localStorage.getItem('12PM'));
-    $("#timeblock-1PM").val(localStorage.getItem('1PM'));
-    $("#timeblock-2PM").val(localStorage.getItem('2PM'));
-    $("#timeblock-3PM").val(localStorage.getItem('3PM'));
-    $("#timeblock-4PM").val(localStorage.getItem('4PM'));
-    $("#timeblock-5PM").val(localStorage.getItem('5PM'));
+    for (let i = 0; i < timeArr.length; i++) { 
+        $('[id^=timeblock-]').each(function (i, v) {
+            $(v).val(localStorage.getItem(timeArr[i]));
+        })
+    }
 };
 
 // Triggers Click Handler for Save Buttons
@@ -51,13 +45,10 @@ saveBtn.on('click', saveButtonClickHandler);
 function saveButtonClickHandler(event) {
     // Keeps Form from Sending
     event.preventDefault();
-
     // Sets Value to Time Associated with Clicked Save Button
     calEntryEventTime = $(this).attr('id').split('-')[1];
-
     // Sets Value to the User's Input Text
     calEntryEventTxt = $(this).siblings('input[name^="timeblock"]').val().trim();
-
     // Calls Function to Store in Local Storage
     storeEvents();
 };
@@ -67,32 +58,29 @@ function storeEvents() {
     localStorage.setItem(calEntryEventTime, calEntryEventTxt);
 };
 
-// Create var to pull IDs from all Timeblock Elements
-let timeblockID = $("input[id*='timeblock']");
-
 // Updates Timeblock Classes/Colors as Time Progresses
-
 function setBGColors() {
-    console.log("setBGColorsRUN");
     // For each timeblock ID, 
     timeblockID.each(function () {
-
     // Split it to display the time contained at the end of the ID, 
     calTimeBlock = $(this).attr('id').split('-')[1];
-
     // And convert it to a recognizable Moment.js format.
-    calTimeBlock = moment(calTimeBlock, 'hA').hours('hA');
-
+    calTimeBlock = moment(calTimeBlock, 'hA').format('hA');
     // Get Moment.js Time & format identically
-    currentTime = moment().hours('hA');
+    currentTime = moment().format('hA');
 
-    if (moment(currentTime).isBefore(calTimeBlock)) {
+    console.log(currentTime);
+    console.log(calTimeBlock);
+    console.log(currentTime < calTimeBlock);
+    
+if (currentTime < calTimeBlock) {
+        $(this).removeClass('past present');
         $(this).addClass('future');
-    } else if (moment(currentTime).isSame(calTimeBlock)) {
-        $(this).removeClass('future');
+    } else if (currentTime === calTimeBlock) {
+        $(this).removeClass('past future');
         $(this).addClass('present');
-    } else if (moment(currentTime).isAfter(calTimeBlock)) {
-        $(this).removeClass('present');
+    } else if (currentTime > calTimeBlock) {
+        $(this).removeClass('present future');
         $(this).addClass('past');
     } else {
         console.log("Time Calculation Error");
