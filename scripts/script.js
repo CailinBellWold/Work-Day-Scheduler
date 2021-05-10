@@ -14,7 +14,7 @@ let saveBtn = $('.saveBtn');
 // Determine Color
 let calTimeblock;
 let timerInterval;
-let timeblockID = $("input[id*='timeblock']");
+let timeblockID = $("textarea[id*='timeblock']");
 
 // Calls Functions to Render Date and Events to the DOM & Update Colors
 function init() {
@@ -48,7 +48,7 @@ function saveButtonClickHandler(event) {
     // Sets Value to Time Associated with Clicked Save Button
     calEntryEventTime = $(this).attr('id').split('-')[1];
     // Sets Value to the User's Input Text
-    calEntryEventTxt = $(this).siblings('input[name^="timeblock"]').val().trim();
+    calEntryEventTxt = $(this).siblings('textarea[name^="timeblock"]').val().trim();
     // Calls Function to Store in Local Storage
     storeEvents();
 };
@@ -109,7 +109,5 @@ setIntervalOnMinute();
 init();
 
 // TO DO: 
-// 1.) Figure out why currentTime won't pass in from a seperate function. Included in setBGColors, for now, though it makes function long.
-// 2.) Figure out why time is formating at top of field (tried text-align-center).
-// 3.) Grant more height to timeblock text to avoid cutting off bottom of decenders.
-// 4.) Add Media-Queries to update look on mobile/small screens.
+// 1.) Figure out why 9AM is always showing up as future (console-logs as future; isn't )
+// 2.) Add Media-Queries to update look on mobile/small screens.
