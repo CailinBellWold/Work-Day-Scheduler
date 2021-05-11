@@ -109,13 +109,13 @@ textarea {
   border-bottom: 2px solid var(--c-black);
   }
   .jumbotron h1 {
-    font-size: xx-large;
+    font-size: 3em;
   }
   .jumbotron p {
     font-size: medium;
   }
   .jumbotron #currentDate {
-    font-size: x-large;
+    font-size: 2em;
   }
   .row {
     margin-bottom: 5em;
@@ -138,9 +138,9 @@ textarea {
 
 @media only screen and (max-width:502px) {
     .jumbotron h1 {
-      font-size: xx-large;
+      font-size: 2.5em;
     }
     .jumbotron #currentDate {
-      font-size: xx-large;
+      font-size: 1.5em;
     }
 }
