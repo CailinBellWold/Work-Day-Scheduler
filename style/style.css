@@ -35,7 +35,7 @@ textarea {
   color: var(--c-black);
   border-radius: 0;
   border-bottom: 3px solid var(--c-black);
-  background-image: linear-gradient(0.25turn, #f4d35e, #ee964b, #f95738);
+  background-image: linear-gradient(0.25turn, var(--c-lblue), var(--c-blue), var(--c-turquoise));
 }
 
 .jumbotron #currentDate {
