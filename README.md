@@ -9,9 +9,7 @@ Many, if not most, applications contain some aspect that deals with time. Diving
 ### Learning Targets
 This exercise furthered experience dynamically updating HTML and CSS using jQuery and introduced the Moment.js library to handle date and time.
 
-#
 ## Core Objectives Met
-
 1. The current day is displayed at the top of the calendar when the planner is opened.
 2. When scrolling down, the user is presented with timeblocks for standard business hours.
 3. Each timeblock is color-coded to indicate whether it is in the past, present, or future.
@@ -19,14 +17,10 @@ This exercise furthered experience dynamically updating HTML and CSS using jQuer
 5. When a user clicks a save button for a timeblock, text for that event is saved in local storage.
 6. When a user refreshes a page, the saved event persists. 
 
-#
 ## Technologies Used
-
 HTML, JS, CSS, jQuery, Moment, Google Fonts, Font Awesome, and Bootstrap 
 
-#
 ## Usage
-
 Demo 1  *Entering an event, clicking save, and refreshing to demonstrate that saved events persist.*
 
 ![My work day scheduler, including date, timeblocks, and save-buttons.](./images/Work-Day-Scheduler-GIF01.gif)
@@ -35,13 +29,10 @@ Demo 2: *Resizing responsiveness*
 
 ![Demo responsiveness.](./images/Work-Day-Scheduler-Resize-GIF02.gif)
 
-#
 ## Deployed Application
-
 https://cailinbellwold.github.io/Work-Day-Scheduler
-#
-## MIT License
 
+## MIT License
 &copy;2021 Cailin Bell Wold
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
